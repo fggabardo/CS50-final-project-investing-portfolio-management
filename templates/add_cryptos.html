@@ -1,0 +1,53 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Cryptos
+{% endblock %}
+
+{% block main %}
+
+<form action="/add_cryptos" method="post">
+
+    <div class="mb-3">
+        <select autocomplete="off" autofocus class="form-control mx-auto w-auto" name="strategy">
+
+            {% for strategy in strategy_list %}
+                <option value={{ strategy.id }}>{{ strategy.strategy_name }}</option>
+            {% endfor %}
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <select autocomplete="off" autofocus class="form-control mx-auto w-auto" name="investment">
+
+            {% for investment in investments_list %}
+                <option value={{ investment.id }}>{{ investment.id }} - {{ investment.symbol }} - {{ investment.name }}</option>
+            {% endfor %}
+            
+        </select>
+    </div>
+
+    <div>
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="quantity" placeholder="quantity" type="text">
+    </div>
+
+    <div>
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="amount" placeholder="amount" type="text">
+    </div>
+
+    <div class="mb-3">
+        <select autocomplete="off" autofocus class="form-control mx-auto w-auto" name="add_or_delete">
+
+            <option value="add">Add</option>
+            <option value="delete">Remove</option>
+
+        </select>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Send</button>
+
+</form>
+
+{% endblock %}

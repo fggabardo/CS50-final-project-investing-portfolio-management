@@ -1,0 +1,6 @@
+Flask
+Flask-Session
+Flask-SQLAlchemy
+requests
+python-dotenv
+datetime

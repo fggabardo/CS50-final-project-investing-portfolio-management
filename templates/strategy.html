@@ -1,0 +1,78 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Strategy
+{% endblock %}
+
+{% block main %}
+
+<form action="/strategy" method="post">
+    <div class="btn-group" role="group" aria-label="Strategy options">
+
+        {% for strategy in strategy_list %}
+
+            <input type="radio" class="btn-check" name="strategyName" id={{ strategy.id }} value={{ strategy.strategy_name }} autocomplete="off">
+            <label class="btn btn-outline-primary" for={{ strategy.id }}>{{ strategy.strategy_name }}</label>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="mb-3">
+        <select autocomplete="off" autofocus class="form-control mx-auto w-auto" name="amount">
+            <option>5%</option>
+            <option>10%</option>
+            <option>15%</option>
+            <option>20%</option>
+            <option>25%</option>
+            <option>30%</option>
+            <option>35%</option>
+            <option>40%</option>
+            <option>45%</option>
+            <option>50%</option>
+            <option>55%</option>
+            <option>60%</option>
+            <option>65%</option>
+            <option>70%</option>
+            <option>75%</option>
+            <option>80%</option>
+            <option>85%</option>
+            <option>90%</option>
+            <option>95%</option>
+        </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Update</button>
+</form>
+
+<h2>Strategy</h2>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Strategy</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for strat in user_strategy %}
+
+            <tr>
+                <td> {{ strat.strat_name }} </td>
+                <td> {{ strat.per_amount_str }} </td>
+            </tr>
+
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td><strong>Total</strong></td>
+            <td><strong>{{ total_amount }}</strong></td>
+        </tr>
+    </tfoot>
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+<h1>Welcome to Investment App</h1>
+
+    <h2>Portfolio Balance</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Strategy</th>
+                <th>Real</th>
+                <th>Real %</th>
+                <th>Target %</th>
+                <th>Delta %</th>
+                <th>Delta Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for balance in portfolio_balance %}
+                <tr>
+                    <td> {{ balance.strategy_name }} </td>
+                    <td> {{ balance.current_total_value_str }} </td>
+                    <td> {{ balance.per_real_str }} </td>
+                    <td> {{ balance.per_amount_str }} </td>
+                    <td> {{ balance.per_delta_str }} </td>
+                    <td> {{ balance.amount_delta_str }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>{{ gross_amount }}</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h2>Investments</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Strategy</th>
+                <th>Type</th>
+                <th>Investment</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for investment in investments_list %}
+                <tr>
+                    <td> {{ investment.strategy_name }} </td>
+                    <td> {{ investment.type }} </td>
+                    <td> {{ investment.investment_id }} </td>
+                    <td> {{ investment.remaining }} </td>
+                    <td> {{ investment.current_price_str }} </td>
+                    <td> {{ investment.current_total_value_str }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+{% endblock %}
